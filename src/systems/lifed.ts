@@ -14,7 +14,10 @@ export const LifedSystem: System = {
         for (let i = 0; i < entities.length; i++) {
             const entity = entities[i];
             const lifedComponent = entity.getComponent<LifedComponent>(LifedComponent);
-            lifedComponent.currentAge += 1;
+
+            if (lifedComponent.currentAge !== lifedComponent.maxAge) {
+                lifedComponent.currentAge += 1;
+            }
 
             if (lifedComponent.currentAge == lifedComponent.maxAge) {
                 // 转变
