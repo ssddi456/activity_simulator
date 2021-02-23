@@ -1,4 +1,6 @@
+import { CommonJobComponent } from '../components/common_job';
 import { JobComponent } from '../components/job';
+import { LifedComponent } from '../components/lifed';
 import { ProcessorComponent } from '../components/processor';
 import { ReciptComponent } from '../components/recipt';
 import { SlotComponent } from '../components/slot';
@@ -7,14 +9,15 @@ import { fundEntity } from './fund';
 
 export class workEntity extends Entity {
     id = 'work';
+    desc = 'work work';
     components = [
         new ProcessorComponent(
             [{
-                mainMaterial: [JobComponent],
+                mainMaterial: [JobComponent, CommonJobComponent],
                 recipt: new ReciptComponent(
                     [
                         new SlotComponent(
-                            [JobComponent],
+                            [JobComponent, CommonJobComponent],
                         )
                     ],
                     10,
@@ -23,7 +26,7 @@ export class workEntity extends Entity {
                     }
                 ),
             }],
-            undefined,
-        )
+        ),
+        new LifedComponent()
     ]
 }

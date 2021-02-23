@@ -2,7 +2,7 @@ import { Component, ifComponent } from './component';
 
 export class Entity {
     id: string;
-
+    desc: string;
     components: Component[];
     namedComponents: { [k: string]: Component }
 

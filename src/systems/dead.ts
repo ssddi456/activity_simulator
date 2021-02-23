@@ -11,7 +11,6 @@ export const  DeadSystem: System = {
     update(entities: Entity[], world: World): void {
         for (let i = 0; i < entities.length; i++) {
             const entity = entities[i];
-            const deadComponent = entity.getComponent< DeadComponent>(DeadComponent);
             // or move to graveyard?
             world.removeEntity(entity);
         }

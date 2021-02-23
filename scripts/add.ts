@@ -40,13 +40,14 @@ inquirer.prompt<CreateOption>([
     },
     {
         name: 'entity_type',
-        options: ['default', 'resource'],
+        type: 'list',
+        choices: ['default', 'resource'],
         message: 'which entity type you need?',
         when: (answers) => answers.type == 'entities',
     },
     {
         name: 'need_new_component',
-        type: 'checkbox',
+        type: 'confirm',
         message: 'should we create same name component?',
         when: (answers) => answers.type == 'systems'
     }

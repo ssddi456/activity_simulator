@@ -19,11 +19,12 @@ export class World {
         this.systems.push(system);
     }
 
-    addEntity(entity: Entity, replace?: Entity) {
+    addEntity(entity: Entity | Entity[], replace?: Entity) {
+        const entities = Array.isArray(entity) ? entity : [entity];
         if (replace) {
-            this.entities.splice(this.entities.indexOf(replace), 1, entity);
+            this.entities.splice(this.entities.indexOf(replace), 1, ...entities);
         } else {
-            this.entities.push(entity);
+            this.entities.push(...entities);
         }
     }
 

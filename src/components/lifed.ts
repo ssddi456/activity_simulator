@@ -10,9 +10,7 @@ export class LifedComponent extends Component {
         /** 是否计数 */
         public running = true,
         /** after dead */
-        public transformTo: Component | Component[] | ((self: Entity) => Entity) = new DeadComponent(),
-        /** if should remove this component */
-        public remove = false,
+        public transformTo: Entity | Entity[] | ((self: Entity) => Entity | Entity[]) = ((self) => (self.addComponent(new DeadComponent), self)),
         /** if should reset this lifed timer*/
         public reset = false,
     ) {

@@ -2,6 +2,7 @@
  * Recipt System
  */
 
+import { type } from 'os';
 import { Component } from '../lib/component';
 import { Entity } from '../lib/entity';
 import { ChoiceComponent } from './choice';
@@ -22,6 +23,12 @@ export class ReciptComponent extends Component {
 
     getItems() {
         return this.slots.map(slot => slot.current).filter(Boolean);
+    }
+    getAge() {
+        if (typeof this.age == 'function') {
+            return this.age(this.getItems());
+        }
+        return this.age
     }
     fulFilled() {
         return this.slots.every(slot => slot.fulFilled());

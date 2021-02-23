@@ -18,29 +18,6 @@ export const LifedSystem: System = {
             if (lifedComponent.currentAge !== lifedComponent.maxAge) {
                 lifedComponent.currentAge += 1;
             }
-
-            if (lifedComponent.currentAge == lifedComponent.maxAge) {
-                // 转变
-                if (lifedComponent.transformTo instanceof Component) {
-                    entity.components.push(lifedComponent.transformTo);
-                }
-                else if (Array.isArray(lifedComponent.transformTo)) {
-                    for (let i = 0; i < lifedComponent.transformTo.length; i++) {
-                        const element = lifedComponent.transformTo[i];
-                        entity.components.push(element);
-                    }
-                } else if (typeof lifedComponent.transformTo == 'function') {
-                    world.addEntity(lifedComponent.transformTo(entity), entity);
-                }
-
-                if (lifedComponent.remove) {
-                    entity.removeComponent(lifedComponent);
-                }
-
-                if (lifedComponent.reset) {
-                    lifedComponent.currentAge = 0;
-                }
-            }
         }
     }
 }
